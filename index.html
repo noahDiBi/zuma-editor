@@ -257,8 +257,10 @@
 				<li><kbd>S</kbd> to make a split between two points</li>
 				<li><kbd>D</kbd> to remove a point</li>
 				<li><kbd>P</kbd> to raise Z-index</li>
-				<li><kbd>I</kbd> to lower Z-index</li>
+				<li><kbd>O</kbd> to lower Z-index</li>
 				<li><kbd>R</kbd> to reset and center the view</li>
+				<li><kbd>N</kbd> to flip horizontally</li>
+				<li><kbd>M</kbd> to flip vertically</li>
 				<li><kbd>Right Click</kbd> to drag the view</li>
 				<li><kbd>Mouse Wheel</kbd> to zoom the view</li>
 			</ul>
@@ -810,7 +812,18 @@
 					yVel = 0;
 					scale = 1.0;
 					scaleTarget = 1.0;
+				} else if (e.key === "n") {
+					for (let i = 0; i < state.points.length; i++) {
+						const pt = state.points[i];
+						pt.x = screenOptions.width - pt.x;
+					}
+				} else if (e.key === "m") {
+					for (let i = 0; i < state.points.length; i++) {
+						const pt = state.points[i];
+						pt.y = screenOptions.height - pt.y;
+					}
 				}
+				
 			};
 
 			const colorSchemes = [
